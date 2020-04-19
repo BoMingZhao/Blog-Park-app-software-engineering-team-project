@@ -26,70 +26,68 @@ public class UserFragment extends Fragment {
         userViewModel =
                 ViewModelProviders.of(this).get(UserViewModel.class);
         View root = inflater.inflate(R.layout.fragment_user, container, false);
-        Boolean notLogin = true;
-        if(notLogin) {
-            Button message = root.findViewById(R.id.messageCenter);
+            Button message = root.findViewById(R.id.NotsignmessageCenter);
             message.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //goto message
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.login");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
             });
-            Button browse = root.findViewById(R.id.browseHistory);
+            Button browse = root.findViewById(R.id.NotsignbrowseHistory);
             browse.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //goto browseHistory
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.login");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
             });
-            Button collect = root.findViewById(R.id.collect);
+            Button collect = root.findViewById(R.id.Notsigncollect);
             collect.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //goto collection
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.login");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
             });
-            Button blog = root.findViewById(R.id.blog);
+            Button blog = root.findViewById(R.id.Notsignblog);
             blog.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //goto blog
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.login");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
             });
-            Button homework = root.findViewById(R.id.homework);
+            Button homework = root.findViewById(R.id.Notsignhomework);
             homework.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //goto homework
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.login");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.myhomework");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
             });
-            Button about = root.findViewById(R.id.about);
+            Button about = root.findViewById(R.id.Notsignabout);
             about.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //goto about
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.about");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.about");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
@@ -100,12 +98,11 @@ public class UserFragment extends Fragment {
                 public void onClick(View v) {
                     //goto login
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.login");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
             });
-        }
         /*final TextView textView = root.findViewById(R.id.text_user);
         userViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

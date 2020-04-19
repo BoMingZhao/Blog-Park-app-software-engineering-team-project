@@ -22,14 +22,22 @@
         android:name="com.example.my_test6.ui.question.QuestionFragment"
         android:label="@string/title_question"
         tools:layout="@layout/fragment_question" />
+
     <fragment
         android:id="@+id/navigation_edu"
         android:name="com.example.my_test6.ui.edu.EduFragment"
         android:label="@string/title_edu"
         tools:layout="@layout/fragment_edu" />
+
     <fragment
         android:id="@+id/navigation_user"
         android:name="com.example.my_test6.ui.user.UserFragment"
         android:label="@string/title_user"
         tools:layout="@layout/fragment_user" />
+
+    <fragment
+        android:id="@+id/navigation_user_sign"
+        android:name="com.example.my_test6.ui.user.UserFragment_login"
+        android:label="我的"
+        tools:layout="@layout/fragment_user_login" />
 </navigation>

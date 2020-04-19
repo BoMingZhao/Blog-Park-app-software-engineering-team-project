@@ -1,9 +1,11 @@
-package com.example.my_test6;
+package com.example.my_test6.ui.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.EditText;
+
+import com.example.my_test6.R;
 
 public class login extends AppCompatActivity {
 

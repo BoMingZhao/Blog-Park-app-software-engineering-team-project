@@ -1,14 +1,17 @@
-package com.example.my_test6;
+package com.example.my_test6.ui.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class myhomework extends AppCompatActivity {
+import com.example.my_test6.R;
+
+public class myblog extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_myhomework);
+        setContentView(R.layout.activity_myblog);
+        setTitle("我的博客");
     }
 }

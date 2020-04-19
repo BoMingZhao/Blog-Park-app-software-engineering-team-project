@@ -1,8 +1,10 @@
-package com.example.my_test6;
+package com.example.my_test6.ui.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.my_test6.R;
 
 public class collection extends AppCompatActivity {
 
@@ -10,6 +12,6 @@ public class collection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collection);
-        getSupportActionBar().hide();
+        setTitle("我的收藏");
     }
 }

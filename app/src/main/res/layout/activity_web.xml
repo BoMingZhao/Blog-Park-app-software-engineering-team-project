@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user.message">
+    tools:context=".ui.user.web">
+
+    <WebView
+        android:id="@+id/team_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

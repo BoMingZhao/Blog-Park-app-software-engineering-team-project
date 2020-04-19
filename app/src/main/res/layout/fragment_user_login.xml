@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1.0"
-    tools:context=".ui.user.UserFragment">
+    tools:context=".ui.user.UserFragment_login">
 
     <Button
-        android:id="@+id/Notsigncollect"
+        android:id="@+id/Signcollect"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#ffffff"
@@ -29,8 +28,8 @@
         app:layout_constraintTop_toBottomOf="@+id/guideline5" />
 
     <Button
-        android:id="@+id/Notsignblog"
-        android:layout_width="match_parent"
+        android:id="@+id/Signblog"
+        android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:background="#ffffff"
         android:drawableStart="@drawable/blog"
@@ -51,11 +50,11 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#dcdcdc"
-        app:layout_constraintTop_toBottomOf="@+id/Notsignblog" />
+        app:layout_constraintTop_toBottomOf="@+id/Signblog" />
 
     <Button
-        android:id="@+id/Notsignhomework"
-        android:layout_width="match_parent"
+        android:id="@+id/Signhomework"
+        android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:background="#ffffff"
         android:drawableStart="@drawable/homework"
@@ -79,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/guideline9" />
 
     <Button
-        android:id="@+id/Notsignabout"
+        android:id="@+id/Signabout"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:background="#ffffff"
@@ -100,14 +99,14 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:background="#dcdcdc"
-        app:layout_constraintBottom_toTopOf="@+id/login" />
+        app:layout_constraintBottom_toTopOf="@+id/Undologin" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/Undologin"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#ffffff"
-        android:text="登录"
+        android:text="退出登录"
         android:textColor="#ff0000"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -123,7 +122,7 @@
         app:layout_constraintGuide_percent="0.25" />
 
     <Button
-        android:id="@+id/NotsignbrowseHistory"
+        android:id="@+id/SignbrowseHistory"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#ffffff"
@@ -132,7 +131,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toEndOf="@+id/Notsigncollect"
+        app:layout_constraintStart_toEndOf="@+id/Signcollect"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -143,7 +142,7 @@
         app:layout_constraintGuide_percent="0.50" />
 
     <Button
-        android:id="@+id/NotsignmessageCenter"
+        android:id="@+id/SignmessageCenter"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#ffffff"
@@ -153,7 +152,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/NotsignbrowseHistory"
+        app:layout_constraintStart_toEndOf="@+id/SignbrowseHistory"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -164,7 +163,7 @@
         app:layout_constraintGuide_percent="0.75" />
 
     <Button
-        android:id="@+id/Notsignmode"
+        android:id="@+id/Signmode"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#ffffff"
@@ -173,7 +172,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/NotsignmessageCenter"
+        app:layout_constraintStart_toEndOf="@+id/SignmessageCenter"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -250,9 +249,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/Username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="登录"
             android:textColor="#000000"
             android:textSize="30sp" />
 
@@ -279,5 +278,98 @@
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center|bottom"
+        android:text="我的关注"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toStartOf="@+id/guideline18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline20" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center|bottom"
+        android:text="我的粉丝"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintStart_toEndOf="@+id/guideline18"
+        app:layout_constraintTop_toBottomOf="@+id/guideline20" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center|bottom"
+        android:text="我的园龄"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline19"
+        app:layout_constraintTop_toBottomOf="@+id/guideline20" />
+
+    <TextView
+        android:id="@+id/Userattention"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center|bottom"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline20"
+        app:layout_constraintEnd_toStartOf="@id/guideline18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView" />
+
+    <TextView
+        android:id="@+id/Userfans"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center|bottom"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline20"
+        app:layout_constraintEnd_toStartOf="@id/guideline19"
+        app:layout_constraintStart_toEndOf="@id/guideline18"
+        app:layout_constraintTop_toBottomOf="@id/imageView" />
+
+    <TextView
+        android:id="@+id/Userage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center|bottom"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
+        app:layout_constraintTop_toBottomOf="@id/imageView" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33333" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66666" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.30" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
