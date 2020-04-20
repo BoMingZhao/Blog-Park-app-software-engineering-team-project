@@ -32,7 +32,7 @@ public class UserFragment extends Fragment {
                 public void onClick(View v) {
                     //goto message
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.message");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
@@ -43,7 +43,7 @@ public class UserFragment extends Fragment {
                 public void onClick(View v) {
                     //goto browseHistory
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.browse");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
@@ -54,7 +54,7 @@ public class UserFragment extends Fragment {
                 public void onClick(View v) {
                     //goto collection
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.collection");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
@@ -65,7 +65,7 @@ public class UserFragment extends Fragment {
                 public void onClick(View v) {
                     //goto blog
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.myblog");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }

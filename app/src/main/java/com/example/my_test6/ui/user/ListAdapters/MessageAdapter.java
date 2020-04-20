@@ -2,37 +2,36 @@ package com.example.my_test6.ui.user.ListAdapters;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.my_test6.R;
-import com.example.my_test6.ui.user.ItemBean.ItemHomework;
+import com.example.my_test6.ui.user.ItemBean.ItemCollection;
+import com.example.my_test6.ui.user.ItemBean.ItemMessage;
 
 import java.util.ArrayList;
 
-public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.innerHolder> {
+public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.innerHolder> {
+    private final ArrayList<ItemMessage> mData;
+    private MessageAdapter.OnItemClickListener clickListener;
 
-    private final ArrayList<ItemHomework> mData;
-    private OnItemClickListener clickListener;
-
-    public HomeworkAdapter(ArrayList<ItemHomework> data){
+    public MessageAdapter(ArrayList<ItemMessage> data){
         this.mData = data;
     }
 
     @NonNull
     @Override
     //创建条目View
-    public innerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.item_homework,null);
-        return new innerHolder(view);
+    public MessageAdapter.innerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = View.inflate(parent.getContext(), R.layout.item_message,null);
+        return new MessageAdapter.innerHolder(view);
     }
 
     @Override
     //用来绑定holder，设置数据
-    public void onBindViewHolder(@NonNull innerHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MessageAdapter.innerHolder holder, int position) {
         holder.setData(mData.get(position),position);
     }
 
@@ -45,7 +44,7 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.innerH
         return 0;
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
+    public void setOnItemClickListener(MessageAdapter.OnItemClickListener listener) {
         //设置一个Item的监听器
         clickListener = listener;
     }
@@ -56,21 +55,15 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.innerH
 
     public class innerHolder extends RecyclerView.ViewHolder {
         private TextView title;
-        private TextView author;
         private TextView Abstract;
-        private TextView comment;
         private TextView time;
-        private ImageView src;
         private int mPosition;
 
         public innerHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.item_blogtitle);
-            author = itemView.findViewById(R.id.item_author);
-            Abstract = itemView.findViewById(R.id.item_abstract);
-            comment = itemView.findViewById(R.id.item_comment);
-            time = itemView.findViewById(R.id.item_Homework_time);
-            src = itemView.findViewById(R.id.item_status);
+            title = itemView.findViewById(R.id.item_Message_blogtitle);
+            Abstract = itemView.findViewById(R.id.item_Message_abstract);
+            time = itemView.findViewById(R.id.item_Message_time);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -80,17 +73,11 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.innerH
                 }
             });
         }
-        public void setData(ItemHomework itembean,int position){
+        public void setData(ItemMessage itembean,int position){
             this.mPosition = position;
             title.setText(itembean.title);
-            comment.setText(itembean.comment);
-            author.setText(itembean.author);
             Abstract.setText(itembean.Abstract);
             time.setText(itembean.time);
-            if(itembean.src == 0)
-                src.setImageResource(R.drawable.cross);
-            else
-                src.setImageResource(R.drawable.hook);
         }
     }
 }
