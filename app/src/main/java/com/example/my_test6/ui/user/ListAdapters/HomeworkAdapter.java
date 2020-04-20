@@ -69,7 +69,7 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.innerH
             author = itemView.findViewById(R.id.item_author);
             Abstract = itemView.findViewById(R.id.item_abstract);
             comment = itemView.findViewById(R.id.item_comment);
-            time = itemView.findViewById(R.id.item_Homework_time);
+            time = itemView.findViewById(R.id.item_time);
             src = itemView.findViewById(R.id.item_status);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

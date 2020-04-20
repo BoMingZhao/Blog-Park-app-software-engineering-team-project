@@ -10,7 +10,6 @@ import android.os.Bundle;
 
 import com.example.my_test6.R;
 import com.example.my_test6.ui.user.ItemBean.ItemMessage;
-import com.example.my_test6.ui.user.ListAdapters.HomeworkAdapter;
 import com.example.my_test6.ui.user.ListAdapters.MessageAdapter;
 
 import java.util.ArrayList;
