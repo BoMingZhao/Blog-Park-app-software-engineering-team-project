@@ -1,5 +1,7 @@
 package com.example.my_test6.ui.user;
 
+import android.content.ComponentName;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.my_test6.R;
+import com.example.my_test6.ui.user.ItemBean.ItemCollection;
 import com.example.my_test6.ui.user.ItemBean.ItemHomework;
 import com.example.my_test6.ui.user.ListAdapters.HomeworkAdapter;
+import com.example.my_test6.ui.user.ListAdapters.MyCollectionAdapter;
 
 import java.util.ArrayList;
 
@@ -35,6 +39,7 @@ public class FinishHomeworkFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         mAdapter = new HomeworkAdapter(mdata);
         recyclerView.setAdapter(mAdapter);
+        initListener();
         return root;
     }
 
@@ -60,5 +65,21 @@ public class FinishHomeworkFragment extends Fragment {
         //设置RecyclerView样式(布局管理器)
         //创建适配器
         //设置到RecyclerView中
+    }
+
+    private void initListener() {
+        mAdapter.setOnItemClickListener(new HomeworkAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(int position) {
+                //处理点击事件
+                Intent intent = new Intent();
+                ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.Item_web");
+                intent.setComponent(componentname);
+                ItemHomework h = mdata.get(position);
+                intent.putExtra("url",h.url);
+                intent.putExtra("title",h.title);
+                startActivity(intent);
+            }
+        });
     }
 }

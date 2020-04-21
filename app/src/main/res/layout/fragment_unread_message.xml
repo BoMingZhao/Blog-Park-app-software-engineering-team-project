@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user.NotFinishHomeworkFragment">
+    tools:context=".ui.user.UnreadMessageFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/FragementRecyclerview2"
+        android:id="@+id/messageFragementRecyclerview3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
 </RelativeLayout>

@@ -14,70 +14,66 @@ import android.view.ViewGroup;
 
 import com.example.my_test6.R;
 import com.example.my_test6.ui.user.ItemBean.ItemHomework;
+import com.example.my_test6.ui.user.ItemBean.ItemMessage;
 import com.example.my_test6.ui.user.ListAdapters.HomeworkAdapter;
+import com.example.my_test6.ui.user.ListAdapters.MessageAdapter;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NotFinishHomeworkFragment extends Fragment {
+public class SystemMessageFragment extends Fragment {
     private RecyclerView recyclerView;
-    private ArrayList<ItemHomework> mdata;
-    private HomeworkAdapter mAdapter;
+    private ArrayList<ItemMessage> mdata;
+    private MessageAdapter mAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root =  inflater.inflate(R.layout.fragment_notfinishhomework, container, false);
-        recyclerView = root.findViewById(R.id.FragementRecyclerview2);
+        View root =  inflater.inflate(R.layout.fragment_system_message, container, false);
+        recyclerView = root.findViewById(R.id.messageFragementRecyclerview1);
         initData();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new HomeworkAdapter(mdata);
+        mAdapter = new MessageAdapter(mdata);
         recyclerView.setAdapter(mAdapter);
         initListener();
         return root;
     }
 
-    private void initData() {
-        mdata = new ArrayList<>();
-
-        for(int i = 0;i <= 15; i++){
-            ItemHomework item = new ItemHomework();
-            item.title = "Scrum Meeting " + i;
-            item.Abstract = "这些都是模拟数据";
-            item.author = "软工小白菜 ";
-            item.comment = "提交：" + i;
-            item.time = "2020年4月19日-2020年4月24日";
-            item.src = 1;
-            if(i == 0){
-                item.url = "https://www.cnblogs.com/team-pakchoi/p/12679258.html";
-            }
-            else {
-                item.url = "https://www.cnblogs.com/team-pakchoi/p/12679181.html";
-            }
-            mdata.add(item);
-        }
-        //设置RecyclerView样式(布局管理器)
-        //创建适配器
-        //设置到RecyclerView中
-    }
-
     private void initListener() {
-        mAdapter.setOnItemClickListener(new HomeworkAdapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new MessageAdapter.OnItemClickListener() {
             @Override
             public void OnItemClick(int position) {
                 //处理点击事件
                 Intent intent = new Intent();
                 ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.Item_web");
                 intent.setComponent(componentname);
-                ItemHomework h = mdata.get(position);
+                ItemMessage h = mdata.get(position);
                 intent.putExtra("url",h.url);
                 intent.putExtra("title",h.title);
                 startActivity(intent);
             }
         });
+    }
+
+    private void initData() {
+        mdata = new ArrayList<>();
+
+        for (int i = 0; i <= 3; i++) {
+            ItemMessage item = new ItemMessage();
+            item.title = "系统通知";
+            item.Abstract = "RE：博客园博客申请通知";
+            item.time = "2020年4月20日";
+            if (i == 0) {
+                item.url = "https://www.cnblogs.com/team-pakchoi/p/12679258.html";
+            } else {
+                item.url = "https://www.cnblogs.com/team-pakchoi/p/12679181.html";
+            }
+            mdata.add(item);
+        }
     }
 }
