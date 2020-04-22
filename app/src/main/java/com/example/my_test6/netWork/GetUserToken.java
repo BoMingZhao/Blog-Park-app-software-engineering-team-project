@@ -1,17 +1,28 @@
 package com.example.my_test6.netWork;
 
 
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+
+import java.io.IOException;
+
 import okhttp3.Call;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.Response;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class GetUserToken {
-    private String UserToken;
     private String code;
+    final private int GET_USER_TOKEN = 0x2;
+    final private Handler handler;
 
-    public GetUserToken(String Code){
+    public GetUserToken(String Code,final Handler handler){
+        this.handler = handler;
         code = Code;
     }
 
@@ -31,5 +42,21 @@ public class GetUserToken {
                 .post(body)
                 .build();
         final Call call = okHttpClient.newCall(request);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Response response = call.execute();
+                    String s = response.body().string();
+                    Message message = new Message();
+                    message.what = GET_USER_TOKEN;
+                    message.obj = s;
+                    handler.sendMessage(message);
+                    Log.d(TAG, "run: sendMessage"+s);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

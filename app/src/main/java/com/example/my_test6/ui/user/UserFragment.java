@@ -1,10 +1,14 @@
 package com.example.my_test6.ui.user;
 
+import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +25,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.my_test6.R;
+import com.example.my_test6.netWork.GetUserToken;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class UserFragment extends Fragment {
     private UserViewModel userViewModel;
     private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
     private View root;
     private Button message;
     private Button browse;
@@ -33,14 +41,35 @@ public class UserFragment extends Fragment {
     private Button homework;
     private Button about;
     private Button login;
-    private TextView attentionnum;
+    private TextView attentionNum;
     private TextView attention;
     private TextView fansNum;
     private TextView fans;
     private TextView ageNum;
     private TextView age;
     private TextView name;
-    private ImageView head;
+    private ImageView head1;
+    private ImageView head2;
+    private String Usertoken;
+    private String code;
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            if(msg.what == 0x2){
+                Usertoken = (String) msg.obj;
+                int i = Usertoken.indexOf("\"",17);
+                Usertoken = Usertoken.substring(17,i);
+                attentionNum.setText("0");
+                fansNum.setText("0");
+                ageNum.setText("1个月");
+                name.setText("软工小白菜");
+                head1.setImageResource(R.drawable.circle);
+                head2.setImageResource(R.drawable.fake_head);
+            }
+        }
+    };
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -54,16 +83,17 @@ public class UserFragment extends Fragment {
         homework = root.findViewById(R.id.Signhomework);
         about = root.findViewById(R.id.Signabout);
         login = root.findViewById(R.id.log);
-        attentionnum = root.findViewById(R.id.UserattentionNum);
+        attentionNum = root.findViewById(R.id.UserattentionNum);
         attention = root.findViewById(R.id.Userattention);
         fansNum = root.findViewById(R.id.UserfansNum);
         fans = root.findViewById(R.id.Userfans);
         ageNum = root.findViewById(R.id.UserageNum);
         age = root.findViewById(R.id.Userage);
         name = root.findViewById(R.id.Username);
-        head = root.findViewById(R.id.UserHeadImage);
+        head1 = root.findViewById(R.id.UserHeadImage);
+        head2 = root.findViewById(R.id.Userhead);
         sp = getActivity().getSharedPreferences("UserCode",Context.MODE_PRIVATE);
-        String code = sp.getString("Code","");
+        editor = sp.edit();
         setUI();
         /*final TextView textView = root.findViewById(R.id.text_user);
         userViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
@@ -81,9 +111,25 @@ public class UserFragment extends Fragment {
         super.onResume();
     }
 
-    public void setUI(){
-        String code = sp.getString("Code","");
+    private void setUI(){
+        code = sp.getString("Code","");
+        Usertoken = sp.getString("UserToken","");
         if(!code.equals("")) {
+            //如果没有UserToken，不做改变
+            /*if(!Usertoken.equals("")){
+                attentionNum.setText("0");
+                fansNum.setText("0");
+                ageNum.setText("1个月");
+                name.setText("软工小白菜");
+                head1.setImageResource(R.drawable.circle);
+                head2.setImageResource(R.drawable.fake_head);
+            }*/
+            attentionNum.setText("0");
+            fansNum.setText("0");
+            ageNum.setText("1个月");
+            name.setText("软工小白菜");
+            head1.setImageResource(R.drawable.circle);
+            head2.setImageResource(R.drawable.fake_head);
             message.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -163,7 +209,6 @@ public class UserFragment extends Fragment {
             attention.setText("我的关注");
             fans.setText("我的粉丝");
             age.setText("我的园龄");
-            head.setImageResource(R.drawable.circle);
         }
 
         else {
@@ -245,7 +290,7 @@ public class UserFragment extends Fragment {
                 }
             });
             name.setText("登录");
-            head.setImageResource(R.drawable.head);
+            head1.setImageResource(R.drawable.head);
         }
     }
 }

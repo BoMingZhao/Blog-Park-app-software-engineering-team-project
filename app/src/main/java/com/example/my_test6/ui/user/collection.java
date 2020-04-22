@@ -47,7 +47,7 @@ public class collection extends AppCompatActivity {
     private void initData() {
         data = new ArrayList<>();
 
-        for(int i = 0;i <= 15; i++){
+        for(int i = 0;i <= -1; i++){
             ItemCollection item = new ItemCollection();
             item.title = "Scrum Meeting " + i;
             item.Abstract = "这些都是模拟数据";

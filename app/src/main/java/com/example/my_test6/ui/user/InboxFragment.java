@@ -61,15 +61,16 @@ public class InboxFragment extends Fragment {
     private void initData() {
         mdata = new ArrayList<>();
 
-        for (int i = 0; i <= 3; i++) {
+        for (int i = 0; i <= 1; i++) {
             ItemMessage item = new ItemMessage();
             item.title = "系统通知";
-            item.Abstract = "RE：博客园博客申请通知";
-            item.time = "2020年4月20日";
+            item.time = "2020年3月20日";
             if (i == 0) {
-                item.url = "https://www.cnblogs.com/team-pakchoi/p/12679258.html";
+                item.Abstract = "RE：您的博客申请已批准";
+                item.url = "https://msg.cnblogs.com/item/2764718";
             } else {
-                item.url = "https://www.cnblogs.com/team-pakchoi/p/12679181.html";
+                item.Abstract = "RE：博客园博客申请通知";
+                item.url = "https://msg.cnblogs.com/item/2764685";
             }
             mdata.add(item);
         }

@@ -26,8 +26,8 @@ public class myhomework extends AppCompatActivity {
         viewpager = findViewById(R.id.testPager);
         tab = findViewById(R.id.homeworkTabs);
         viewlist = new ArrayList<Fragment>();
-        viewlist.add(new FinishHomeworkFragment());
         viewlist.add(new NotFinishHomeworkFragment());
+        viewlist.add(new FinishHomeworkFragment());
         FragmentManager fm=getSupportFragmentManager();
         myFragmentPagerAdapter mfpa=new myFragmentPagerAdapter(fm, viewlist);
         viewpager.setAdapter(mfpa);

@@ -58,7 +58,7 @@ public class UnreadMessageFragment extends Fragment {
     private void initData() {
         mdata = new ArrayList<>();
 
-        for (int i = 0; i <= 3; i++) {
+        for (int i = 0; i <= -1; i++) {
             ItemMessage item = new ItemMessage();
             item.title = "系统通知";
             item.Abstract = "RE：博客园博客申请通知";
