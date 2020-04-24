@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.user.login_transition"></activity>
         <activity android:name=".ui.user.Item_web" />
         <activity android:name=".ui.user.web" />
         <activity android:name=".ui.user.login" />

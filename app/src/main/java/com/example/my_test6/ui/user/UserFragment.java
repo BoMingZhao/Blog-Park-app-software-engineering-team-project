@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.Glide;
+import com.example.my_test6.Pool.MinePool;
 import com.example.my_test6.Pool.TokenPool;
 import com.example.my_test6.R;
 import com.example.my_test6.netWork.GetApi;
@@ -60,31 +61,10 @@ public class UserFragment extends Fragment {
             if(msg.what == 0x1){//设置用户信息
                 Gson gson = new Gson();
                 String json = (String) msg.obj;
-                System.out.println("json: "+json);
-                users = gson.fromJson(json,Users.class);
-                ageNum.setText(users.Seniority);
-                name.setText(users.DisplayName);
-                head1.setImageResource(R.drawable.circle);
-                Glide.with(head2.getContext()).load(users.Face).into(head2);
-                GetApi getApi = new GetApi();
-                String url = "https://api.cnblogs.com/api/blogs/" + users.BlogApp;
-                //getApi.getMyApi(handler2,url,2);
-                System.out.println("Over handler!");
-            }
-        }
-    };
-
-    @SuppressLint("HandlerLeak")
-    private Handler handler2 = new Handler(){
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            System.out.println("Strat handler 2");
-            /*if(msg.what == 2){
-                Gson gson = new Gson();
-                String json = (String) msg.obj;
                 MyBlogs myBlogs = gson.fromJson(json,MyBlogs.class);
-                attentionNum.setText(myBlogs.postCount);
-            }*/
+                String s = "" + myBlogs.postCount;
+                attentionNum.setText(s);
+            }
         }
     };
 
@@ -122,6 +102,7 @@ public class UserFragment extends Fragment {
 
     public void onResume() {
         //System.out.println("开始setUI:"+ TokenPool.getTokenPool().UserToken);
+        users = MinePool.getMinePool().users;
         setUI();
         super.onResume();
     }
@@ -131,7 +112,7 @@ public class UserFragment extends Fragment {
         Usertoken = TokenPool.getTokenPool().UserToken;
         if(isLogin) {
             GetUserApi api = new GetUserApi();
-            String url = "https://api.cnblogs.com/api/users";
+            String url = "https://api.cnblogs.com/api/blogs/" + users.BlogApp;
             api.getMyApi(handler,url,1);
             message.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -209,6 +190,10 @@ public class UserFragment extends Fragment {
                     startActivity(intent);
                 }
             });
+            ageNum.setText(users.Seniority);
+            name.setText(users.DisplayName);
+            head1.setImageResource(R.drawable.circle);
+            Glide.with(head2.getContext()).load(users.Face).into(head2);
             attention.setText("我的博客");
             age.setText("我的园龄");
         }
@@ -286,7 +271,7 @@ public class UserFragment extends Fragment {
                 public void onClick(View v) {
                     //goto login
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login_transition");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
@@ -298,13 +283,6 @@ public class UserFragment extends Fragment {
             attentionNum.setText("");
             head1.setImageResource(R.drawable.head);
             head2.setImageResource(R.drawable.head);
-        }
-    }
-
-    private class MyWebViewClient extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-            return false;
         }
     }
 }

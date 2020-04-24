@@ -2,6 +2,7 @@ package com.example.my_test6.netWork;
 
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.example.my_test6.Pool.TokenPool;
 
@@ -29,7 +30,7 @@ public class GetUserApi {
                 super.run();
                 try {
                     String result = getUrl(url,token);
-                    //    Log.d("TAG",result);
+                    Log.d("TAG",result);
                     Message message1 = Message.obtain();
                     message1.what= what;
                     message1.obj = result;
