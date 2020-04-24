@@ -1,23 +1,22 @@
+
 package com.example.my_test6.ui.user;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+        import android.annotation.SuppressLint;
+        import android.content.ComponentName;
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.os.Handler;
+        import android.os.Message;
 
-import android.annotation.SuppressLint;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+        import androidx.annotation.NonNull;
+        import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
-import com.example.my_test6.Pool.MinePool;
-import com.example.my_test6.Pool.TokenPool;
-import com.example.my_test6.R;
-import com.example.my_test6.netWork.GetApi;
-import com.example.my_test6.netWork.GetUserApi;
-import com.example.my_test6.ui.user.GsonBean.Users;
-import com.google.gson.Gson;
+        import com.example.my_test6.Pool.MinePool;
+        import com.example.my_test6.Pool.TokenPool;
+        import com.example.my_test6.R;
+        import com.example.my_test6.netWork.GetUserApi;
+        import com.example.my_test6.ui.user.GsonBean.Users;
+        import com.google.gson.Gson;
 
 public class login_transition extends AppCompatActivity {
 
@@ -58,3 +57,4 @@ public class login_transition extends AppCompatActivity {
         }
     }
 }
+

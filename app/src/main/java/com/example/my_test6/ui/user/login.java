@@ -1,5 +1,13 @@
 package com.example.my_test6.ui.user;
 
+import android.annotation.SuppressLint;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -75,7 +83,7 @@ public class login extends AppCompatActivity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
             if(request.getUrl().toString().substring(0,39).equals("https://oauth.cnblogs.com/auth/callback")){
-                sharedpreferences = getApplication().getSharedPreferences("User",Context.MODE_PRIVATE);
+                sharedpreferences = getApplication().getSharedPreferences("User", Context.MODE_PRIVATE);
                 editor = sharedpreferences.edit();
                 int p = request.getUrl().toString().indexOf("&",45);
                 //System.out.println("code " + request.getUrl().toString().substring(45,p));
