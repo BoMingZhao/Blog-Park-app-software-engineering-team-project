@@ -1,5 +1,4 @@
 package com.example.my_test6.ui.edu;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,9 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.my_test6.Bean.BlogSummary;
@@ -36,7 +33,7 @@ public class EduFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         eduViewModel =
                 ViewModelProviders.of(this).get(EduViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_edu, container, false);
+        View root = inflater.inflate(R.layout.user_fragment_edu, container, false);
         final Button button1 = root.findViewById(R.id.button);
         final TextView textView1 = root.findViewById(R.id.textView);
         final Handler handler = new Handler(){

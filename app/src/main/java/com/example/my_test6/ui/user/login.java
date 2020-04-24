@@ -6,16 +6,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.EditText;
 
+import com.example.my_test6.Pool.TokenPool;
 import com.example.my_test6.R;
 import com.example.my_test6.netWork.GetUserToken;
+
+import java.io.File;
 
 public class login extends AppCompatActivity {
     private String Usertoken;
@@ -28,26 +33,35 @@ public class login extends AppCompatActivity {
             super.handleMessage(msg);
             if(msg.what == 0x2){
                 Usertoken = (String) msg.obj;
-                int i = Usertoken.indexOf("\"",17);
-                Usertoken = Usertoken.substring(17,i);
+                int p1 = Usertoken.indexOf("access_token",0);
+                int p2 = Usertoken.indexOf(":",p1) + 2;
+                int p3 = Usertoken.indexOf("\"",p2);
+                Usertoken = Usertoken.substring(p2, p3);
                 editor.putString("UserToken",Usertoken);
+                editor.putBoolean("isLogin",true);
                 editor.commit();
+                TokenPool.getTokenPool().UserToken = Usertoken;
+                TokenPool.getTokenPool().isLogin = true;
+                System.out.println("UserToken " + Usertoken);
+                login.this.finish();
             }
         }
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log);
+        setContentView(R.layout.user_activity_log);
         getSupportActionBar().hide();
+
         WebView webview = findViewById(R.id.login_WebView);
+        clearCache(this);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setUseWideViewPort(true); //将图片调整到适合webview的大小
         webview.getSettings().setLoadWithOverviewMode(true); // 缩放至屏幕的大小
         webview.setWebViewClient(new MyWebViewClient());
         StringBuilder builder = new StringBuilder();
         builder.append("client_id=").append("8ab24367-91d6-4c19-9846-121909a0e01f").append("&")
-                .append("scope=").append("openid profile CnBlogsApi offline_access").append("&")
+                .append("scope=").append("openid profile CnBlogsApi").append("&")
                 .append("response_type=").append("code id_token").append("&")
                 .append("redirect_uri=").append("https://oauth.cnblogs.com/auth/callback").append("&")
                 .append("state=").append("cnblogs.com").append("&")
@@ -61,18 +75,54 @@ public class login extends AppCompatActivity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
             if(request.getUrl().toString().substring(0,39).equals("https://oauth.cnblogs.com/auth/callback")){
-                sharedpreferences = getApplication().getSharedPreferences("UserCode",Context.MODE_PRIVATE);
+                sharedpreferences = getApplication().getSharedPreferences("User",Context.MODE_PRIVATE);
                 editor = sharedpreferences.edit();
                 int p = request.getUrl().toString().indexOf("&",45);
-                editor.putString("Code",request.getUrl().toString().substring(45,p));
-                System.out.println("code" + request.getUrl().toString().substring(45,p));
-                editor.commit();
+                //System.out.println("code " + request.getUrl().toString().substring(45,p));
                 GetUserToken get = new GetUserToken(request.getUrl().toString().substring(45,p),handler);
                 get.gettoken();
-                login.this.finish();
                 return true;
             }
             return false;
         }
+    }
+    public static void clearCache(Context context) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) { // 清除cookie
+                CookieManager.getInstance().removeAllCookies(null);
+            } else {
+                CookieSyncManager.createInstance(context);
+                CookieManager.getInstance().removeAllCookie();
+                CookieSyncManager.getInstance().sync();
+            }
+
+            new WebView(context).clearCache(true);
+
+            File cacheFile = new File(context.getCacheDir().getParent() + "/app_webview");
+            clearCacheFolder(cacheFile, System.currentTimeMillis());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static int clearCacheFolder(File dir, long time) {
+        int deletedFiles = 0;
+        if (dir != null && dir.isDirectory()) {
+            try {
+                for (File child : dir.listFiles()) {
+                    if (child.isDirectory()) {
+                        deletedFiles += clearCacheFolder(child, time);
+                    }
+                    if (child.lastModified() < time) {
+                        if (child.delete()) {
+                            deletedFiles++;
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return deletedFiles;
     }
 }

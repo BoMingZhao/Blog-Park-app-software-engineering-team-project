@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.my_test6.R;
-import com.example.my_test6.ui.user.ItemBean.ItemCollection;
 import com.example.my_test6.ui.user.ItemBean.ItemMessage;
 
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.innerHol
     @Override
     //创建条目View
     public MessageAdapter.innerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.item_message,null);
+        View view = View.inflate(parent.getContext(), R.layout.user_item_message,null);
         return new MessageAdapter.innerHolder(view);
     }
 

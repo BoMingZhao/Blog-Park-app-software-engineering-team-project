@@ -24,7 +24,7 @@ public class MyBlogAdapter extends RecyclerView.Adapter<MyBlogAdapter.innerHolde
     @Override
     //创建条目View
     public MyBlogAdapter.innerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.item_blog,null);
+        View view = View.inflate(parent.getContext(), R.layout.user_item_blog,null);
         return new MyBlogAdapter.innerHolder(view);
     }
 

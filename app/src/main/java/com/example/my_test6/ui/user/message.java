@@ -21,7 +21,7 @@ public class message extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message);
+        setContentView(R.layout.user_activity_message);
         setTitle("消息中心");
         viewpager = findViewById(R.id.messagePager);
         tab = findViewById(R.id.messageTabs);

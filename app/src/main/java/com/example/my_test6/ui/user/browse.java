@@ -22,7 +22,7 @@ public class browse extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_browse);
+        setContentView(R.layout.user_activity_browse);
         myBrowseHistoryList = findViewById(R.id.MyBrowseHistoryRecyclerView);
         setTitle("浏览记录");
         initData();

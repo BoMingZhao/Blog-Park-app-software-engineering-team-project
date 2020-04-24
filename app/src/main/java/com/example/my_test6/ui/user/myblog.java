@@ -21,7 +21,7 @@ public class myblog extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_myblog);
+        setContentView(R.layout.user_activity_myblog);
         myBlogList = findViewById(R.id.MyBlogRecyclerView);
         setTitle("我的博客");
         initData();

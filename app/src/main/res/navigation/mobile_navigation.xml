@@ -9,31 +9,31 @@
         android:id="@+id/navigation_home"
         android:name="com.example.my_test6.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/user_fragment_home" />
 
     <fragment
         android:id="@+id/navigation_blink"
         android:name="com.example.my_test6.ui.blink.BlinkFragment"
         android:label="@string/title_blink"
-        tools:layout="@layout/fragment_blink" />
+        tools:layout="@layout/user_fragment_blink" />
 
     <fragment
         android:id="@+id/navigation_question"
         android:name="com.example.my_test6.ui.question.QuestionFragment"
         android:label="@string/title_question"
-        tools:layout="@layout/fragment_question" />
+        tools:layout="@layout/user_fragment_question" />
 
     <fragment
         android:id="@+id/navigation_edu"
         android:name="com.example.my_test6.ui.edu.EduFragment"
         android:label="@string/title_edu"
-        tools:layout="@layout/fragment_edu" />
+        tools:layout="@layout/user_fragment_edu" />
 
     <fragment
         android:id="@+id/navigation_user"
         android:name="com.example.my_test6.ui.user.UserFragment"
         android:label="@string/title_user"
-        tools:layout="@layout/fragment_user" />
+        tools:layout="@layout/user_fragment_user" />
 
     <fragment
         android:id="@+id/navigation_user_sign"

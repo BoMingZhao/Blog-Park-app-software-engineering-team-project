@@ -3,8 +3,6 @@ package com.example.my_test6.ui.user;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
@@ -18,7 +16,7 @@ public class web extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_web);
+        setContentView(R.layout.user_activity_web);
         getSupportActionBar().hide();
         team = findViewById(R.id.team_webview);
         team.getSettings().setJavaScriptEnabled(true);

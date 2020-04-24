@@ -22,7 +22,7 @@ public class BlinkFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         blinkViewModel =
                 ViewModelProviders.of(this).get(BlinkViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_blink, container, false);
+        View root = inflater.inflate(R.layout.user_fragment_blink, container, false);
         final TextView textView = root.findViewById(R.id.text_blink);
         blinkViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

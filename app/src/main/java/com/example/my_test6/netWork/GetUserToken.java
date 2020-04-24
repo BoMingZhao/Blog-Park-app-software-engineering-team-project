@@ -34,11 +34,11 @@ public class GetUserToken {
                 .add("client_secret","nD63VpKAHFeE8ObrKiPYOZD0yPwoT1pxfgDhZG_E1SpgDyZogA2n0Z_0-3qXOq92z8avekcEzxDmy4Qp")
                 .add("grant_type","authorization_code")
                 .add("code",code)
-                .add("redirect_uri","https://oauth.cnblos.com/auth/callback")
+                .add("redirect_uri","https://oauth.cnblogs.com/auth/callback")
                 .build();
         final Request request = new Request.Builder()
                 .url(url)
-                .header("application", "x-www-form-urlencoded")
+                .header("Content-Type", "application/x-www-form-urlencoded")
                 .post(body)
                 .build();
         final Call call = okHttpClient.newCall(request);

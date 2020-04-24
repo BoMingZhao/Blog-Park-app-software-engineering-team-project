@@ -15,6 +15,7 @@
         <activity android:name=".ui.user.Item_web" />
         <activity android:name=".ui.user.web" />
         <activity android:name=".ui.user.login" />
+        <activity android:name=".ui.user.logout" />
         <activity android:name=".ui.user.message" />
         <activity android:name=".ui.user.browse" />
         <activity android:name=".ui.user.collection" />

@@ -16,7 +16,7 @@ public class about extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.user_activity_about);
         setTitle("关于");
         Button about_team = findViewById(R.id.about_team);
         about_team.setOnClickListener(new View.OnClickListener() {

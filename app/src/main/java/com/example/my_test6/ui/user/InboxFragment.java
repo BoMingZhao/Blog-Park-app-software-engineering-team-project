@@ -30,7 +30,7 @@ public class InboxFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root =  inflater.inflate(R.layout.fragment_inbox, container, false);
+        View root =  inflater.inflate(R.layout.user_fragment_inbox, container, false);
         recyclerView = root.findViewById(R.id.messageFragementRecyclerview2);
         initData();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());

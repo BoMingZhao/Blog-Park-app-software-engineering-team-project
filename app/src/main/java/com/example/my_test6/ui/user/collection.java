@@ -21,7 +21,7 @@ public class collection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_collection);
+        setContentView(R.layout.user_activity_collection);
         myCollectionList = findViewById(R.id.CollectionRecyclerView);
         setTitle("我的收藏");
         initData();

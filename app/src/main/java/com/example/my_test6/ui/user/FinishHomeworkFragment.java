@@ -13,10 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.my_test6.R;
-import com.example.my_test6.ui.user.ItemBean.ItemCollection;
 import com.example.my_test6.ui.user.ItemBean.ItemHomework;
 import com.example.my_test6.ui.user.ListAdapters.HomeworkAdapter;
-import com.example.my_test6.ui.user.ListAdapters.MyCollectionAdapter;
 
 import java.util.ArrayList;
 
@@ -31,7 +29,7 @@ public class FinishHomeworkFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root =  inflater.inflate(R.layout.fragment_finishhomework, container, false);
+        View root =  inflater.inflate(R.layout.user_fragment_finishhomework, container, false);
         recyclerView = root.findViewById(R.id.FragementRecyclerview1);
         initData();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());

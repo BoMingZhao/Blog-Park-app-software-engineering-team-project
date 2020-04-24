@@ -13,9 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.my_test6.R;
-import com.example.my_test6.ui.user.ItemBean.ItemHomework;
 import com.example.my_test6.ui.user.ItemBean.ItemMessage;
-import com.example.my_test6.ui.user.ListAdapters.HomeworkAdapter;
 import com.example.my_test6.ui.user.ListAdapters.MessageAdapter;
 
 import java.util.ArrayList;
@@ -32,7 +30,7 @@ public class SystemMessageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root =  inflater.inflate(R.layout.fragment_system_message, container, false);
+        View root =  inflater.inflate(R.layout.user_fragment_system_message, container, false);
         recyclerView = root.findViewById(R.id.messageFragementRecyclerview1);
         initData();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());

@@ -26,7 +26,7 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.innerH
     @Override
     //创建条目View
     public innerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.item_homework,null);
+        View view = View.inflate(parent.getContext(), R.layout.user_item_homework,null);
         return new innerHolder(view);
     }
 

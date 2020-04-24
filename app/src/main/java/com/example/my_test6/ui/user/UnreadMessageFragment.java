@@ -27,7 +27,7 @@ public class UnreadMessageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root =  inflater.inflate(R.layout.fragment_unread_message, container, false);
+        View root =  inflater.inflate(R.layout.user_fragment_unread_message, container, false);
         recyclerView = root.findViewById(R.id.messageFragementRecyclerview3);
         initData();
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
