@@ -51,6 +51,7 @@ public class myblog extends AppCompatActivity {
                         iblog.title = myBlogList.Title;
                         iblog.time = myBlogList.PostDate;
                         iblog.time = iblog.time.replaceAll("T"," ");
+                        iblog.time = iblog.time.substring(0,iblog.time.length()-3);
                         iblog.url = myBlogList.Url;
                         iblog.author = myBlogList.Author;
                         iblog.Abstract = myBlogList.Description;

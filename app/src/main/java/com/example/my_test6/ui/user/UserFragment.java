@@ -53,21 +53,6 @@ public class UserFragment extends Fragment {
     private String Usertoken;
     private boolean isLogin;
     private Users users;
-    @SuppressLint("HandlerLeak")
-    private Handler handler = new Handler(){
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 0x1){//设置用户信息
-                Gson gson = new Gson();
-                String json = (String) msg.obj;
-                MyBlogs myBlogs = gson.fromJson(json,MyBlogs.class);
-                MinePool.getMinePool().myblogs = myBlogs;
-                String s = "" + myBlogs.postCount;
-                attentionNum.setText(s);
-            }
-        }
-    };
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -112,9 +97,48 @@ public class UserFragment extends Fragment {
         isLogin = TokenPool.getTokenPool().isLogin;
         Usertoken = TokenPool.getTokenPool().UserToken;
         if(isLogin) {
+            @SuppressLint("HandlerLeak")
+            final Handler handler = new Handler() {
+                @Override
+                public void handleMessage(@NonNull Message msg) {
+                    super.handleMessage(msg);
+                    if (msg.what == 0x1) {//收到users信息
+                        Gson gson = new Gson();
+                        String json = (String) msg.obj;
+                        Users users;
+                        users = gson.fromJson(json, Users.class);
+                        MinePool.getMinePool().users = users;
+                        //设置未完成UI
+                        ageNum.setText(users.Seniority);
+                        name.setText(users.DisplayName);
+                        Glide.with(head2.getContext()).load(users.Face).into(head2);
+                        System.out.println("blogApp: " + users.BlogApp);
+                        //博客信息
+                        @SuppressLint("HandlerLeak")
+                         final Handler handler1 = new Handler(){
+                            @Override
+                            public void handleMessage(@NonNull Message msg) {
+                                super.handleMessage(msg);
+                                if(msg.what == 0x1){//设置用户信息
+                                    Gson gson = new Gson();
+                                    String json = (String) msg.obj;
+                                    MyBlogs myBlogs = gson.fromJson(json,MyBlogs.class);
+                                    MinePool.getMinePool().myblogs = myBlogs;
+                                    String s = "" + myBlogs.postCount;
+                                    attentionNum.setText(s);
+                                }
+                            }
+                        };
+                        GetUserApi api = new GetUserApi();
+                        String url = "https://api.cnblogs.com/api/blogs/" + users.BlogApp;
+                        api.getMyApi(handler1,url,1);
+                    }
+                }
+            };
+            //调用户博客信息
             GetUserApi api = new GetUserApi();
-            String url = "https://api.cnblogs.com/api/blogs/" + users.BlogApp;
-            api.getMyApi(handler,url,1);
+            String url = "https://api.cnblogs.com/api/users";
+            api.getMyApi(handler, url, 1);
             message.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -191,10 +215,7 @@ public class UserFragment extends Fragment {
                     startActivity(intent);
                 }
             });
-            ageNum.setText(users.Seniority);
-            name.setText(users.DisplayName);
             head1.setImageResource(R.drawable.circle);
-            Glide.with(head2.getContext()).load(users.Face).into(head2);
             attention.setText("我的博客");
             age.setText("我的园龄");
         }
@@ -206,7 +227,7 @@ public class UserFragment extends Fragment {
                 public void onClick(View v) {
                     //goto message
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login_transition");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
@@ -217,7 +238,7 @@ public class UserFragment extends Fragment {
                 public void onClick(View v) {
                     //goto browseHistory
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login_transition");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
@@ -228,7 +249,7 @@ public class UserFragment extends Fragment {
                 public void onClick(View v) {
                     //goto collection
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login_transition");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
@@ -239,7 +260,7 @@ public class UserFragment extends Fragment {
                 public void onClick(View v) {
                     //goto blog
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login_transition");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
@@ -250,7 +271,7 @@ public class UserFragment extends Fragment {
                 public void onClick(View v) {
                     //goto homework
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login_transition");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
@@ -261,7 +282,7 @@ public class UserFragment extends Fragment {
                 public void onClick(View v) {
                     //goto about
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login_transition");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
@@ -272,7 +293,7 @@ public class UserFragment extends Fragment {
                 public void onClick(View v) {
                     //goto login
                     Intent intent = new Intent();
-                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login_transition");
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.ui.user.login");
                     intent.setComponent(componentname);
                     startActivity(intent);
                 }
