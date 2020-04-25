@@ -2,11 +2,13 @@ package com.example.my_test6.ui.user.ListAdapters;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.my_test6.R;
 import com.example.my_test6.ui.user.ItemBean.ItemMyBlog;
 
@@ -58,6 +60,7 @@ public class MyBlogAdapter extends RecyclerView.Adapter<MyBlogAdapter.innerHolde
         private TextView Abstract;
         private TextView comment;
         private TextView time;
+        private ImageView head;
         private int mPosition;
 
         public innerHolder(@NonNull View itemView) {
@@ -67,6 +70,7 @@ public class MyBlogAdapter extends RecyclerView.Adapter<MyBlogAdapter.innerHolde
             Abstract = itemView.findViewById(R.id.item_Homework_abstract);
             comment = itemView.findViewById(R.id.item_Homework_comment);
             time = itemView.findViewById(R.id.item_Homework_time);
+            head = itemView.findViewById(R.id.item_Homework_Userhead);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -83,6 +87,7 @@ public class MyBlogAdapter extends RecyclerView.Adapter<MyBlogAdapter.innerHolde
             author.setText(itembean.author);
             Abstract.setText(itembean.Abstract);
             time.setText(itembean.time);
-        }
+            Glide.with(head.getContext()).load(itembean.head).into(head);
+    }
     }
 }

@@ -7,4 +7,5 @@ public class ItemMyBlog {
     public String comment;
     public String url;
     public String time;
+    public String head;
 }

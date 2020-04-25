@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
+import com.bumptech.glide.Glide;
 import com.example.my_test6.Pool.MinePool;
 import com.example.my_test6.R;
 import com.example.my_test6.netWork.GetUserApi;
@@ -49,10 +50,12 @@ public class myblog extends AppCompatActivity {
                         ItemMyBlog iblog = new ItemMyBlog();
                         iblog.title = myBlogList.Title;
                         iblog.time = myBlogList.PostDate;
+                        iblog.time = iblog.time.replaceAll("T"," ");
                         iblog.url = myBlogList.Url;
                         iblog.author = myBlogList.Author;
                         iblog.Abstract = myBlogList.Description;
-                        iblog.comment = "" + myBlogList.CommentCount;
+                        iblog.comment = "评论：" + myBlogList.CommentCount;
+                        iblog.head = myBlogList.Avatar;
                         mdata.add(iblog);
                     }
                     mAdapter = new MyBlogAdapter(mdata);
