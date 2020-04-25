@@ -25,7 +25,7 @@ public class MyCollectionAdapter extends RecyclerView.Adapter<MyCollectionAdapte
     @Override
     //创建条目View
     public MyCollectionAdapter.innerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.user_item_blog,null);
+        View view = View.inflate(parent.getContext(), R.layout.user_item_collection,null);
         return new MyCollectionAdapter.innerHolder(view);
     }
 
@@ -55,19 +55,15 @@ public class MyCollectionAdapter extends RecyclerView.Adapter<MyCollectionAdapte
 
     public class innerHolder extends RecyclerView.ViewHolder {
         private TextView title;
-        private TextView author;
         private TextView Abstract;
-        private TextView comment;
         private TextView time;
         private int mPosition;
 
         public innerHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.item_Homework_blogtitle);
-            author = itemView.findViewById(R.id.item_Homework_author);
-            Abstract = itemView.findViewById(R.id.item_Homework_abstract);
-            comment = itemView.findViewById(R.id.item_Homework_comment);
-            time = itemView.findViewById(R.id.item_Homework_time);
+            title = itemView.findViewById(R.id.item_Collection_blogtitle);
+            Abstract = itemView.findViewById(R.id.item_Collection_abstract);
+            time = itemView.findViewById(R.id.item_Collection_time);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -80,8 +76,6 @@ public class MyCollectionAdapter extends RecyclerView.Adapter<MyCollectionAdapte
         public void setData(ItemCollection itembean,int position){
             this.mPosition = position;
             title.setText(itembean.title);
-            comment.setText(itembean.comment);
-            author.setText(itembean.author);
             Abstract.setText(itembean.Abstract);
             time.setText(itembean.time);
         }
