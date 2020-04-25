@@ -108,4 +108,10 @@ public class collection extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         myCollectionList.setLayoutManager(layoutManager);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initData();
+    }
 }

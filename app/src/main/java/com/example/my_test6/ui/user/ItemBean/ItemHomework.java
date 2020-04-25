@@ -8,4 +8,5 @@ public class ItemHomework {
     public String url;
     public String time;
     public int src;//1是已提交，0是未提交
+    public String avatarUrl;
 }

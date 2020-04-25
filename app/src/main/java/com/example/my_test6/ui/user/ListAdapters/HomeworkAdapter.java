@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.my_test6.R;
 import com.example.my_test6.ui.user.ItemBean.ItemHomework;
 
@@ -61,6 +62,7 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.innerH
         private TextView comment;
         private TextView time;
         private ImageView src;
+        private ImageView head;
         private int mPosition;
 
         public innerHolder(@NonNull View itemView) {
@@ -71,6 +73,7 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.innerH
             comment = itemView.findViewById(R.id.item_comment);
             time = itemView.findViewById(R.id.item_time);
             src = itemView.findViewById(R.id.item_status);
+            head = itemView.findViewById(R.id.item_Userhead);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -87,6 +90,7 @@ public class HomeworkAdapter extends RecyclerView.Adapter<HomeworkAdapter.innerH
             author.setText(itembean.author);
             Abstract.setText(itembean.Abstract);
             time.setText(itembean.time);
+            Glide.with(head.getContext()).load(itembean.avatarUrl).into(head);
             if(itembean.src == 0)
                 src.setImageResource(R.drawable.cross);
             else

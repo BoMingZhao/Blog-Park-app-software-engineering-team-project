@@ -16,7 +16,7 @@
         android:text="我的收藏"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/guideline18"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
@@ -126,12 +126,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#ffffff"
-        android:drawableTop="@drawable/browse"
-        android:text="浏览记录"
+        android:drawableTop="@drawable/question"
+        android:text="我的博问"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toEndOf="@+id/Signcollect"
+        app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintStart_toEndOf="@+id/guideline18"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -146,13 +146,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#ffffff"
-        android:drawableTop="@drawable/message"
-        android:text="消息中心"
+        android:drawableTop="@drawable/pyq"
+        android:text="我的动态"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/SignbrowseHistory"
+        app:layout_constraintStart_toEndOf="@+id/guideline19"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -162,18 +162,6 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.75" />
 
-    <Button
-        android:id="@+id/Signmode"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#ffffff"
-        android:drawableTop="@drawable/moon"
-        android:text="夜间模式"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/SignmessageCenter"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
