@@ -62,6 +62,7 @@ public class UserFragment extends Fragment {
                 Gson gson = new Gson();
                 String json = (String) msg.obj;
                 MyBlogs myBlogs = gson.fromJson(json,MyBlogs.class);
+                MinePool.getMinePool().myblogs = myBlogs;
                 String s = "" + myBlogs.postCount;
                 attentionNum.setText(s);
             }
