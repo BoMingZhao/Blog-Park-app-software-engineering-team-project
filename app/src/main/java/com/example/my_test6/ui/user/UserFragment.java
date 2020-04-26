@@ -93,7 +93,7 @@ public class UserFragment extends Fragment {
     }
 
     private void setUI(){
-        users = MinePool.getMinePool().users;
+        //users = MinePool.getMinePool().users;
         isLogin = TokenPool.getTokenPool().isLogin;
         Usertoken = TokenPool.getTokenPool().UserToken;
         if(isLogin) {
