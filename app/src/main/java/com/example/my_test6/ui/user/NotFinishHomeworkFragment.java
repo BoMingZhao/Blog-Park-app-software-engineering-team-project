@@ -78,8 +78,32 @@ public class NotFinishHomeworkFragment extends Fragment {
                                         itemHomework.Abstract = homework.description;
                                         itemHomework.author = homework.displayName;
                                         itemHomework.avatarUrl = "https:" + homework.avatarUrl;
-                                        itemHomework.time = homework.startTime.substring(0,homework.startTime.length()-3)
-                                                + "~" + homework.deadline.substring(0,homework.deadline.length()-3);
+                                        if(homework.startTime == null){
+                                            if(homework.deadline == null){
+                                                itemHomework.time = "未设置";
+                                            }
+                                            else {
+                                                if(homework.deadline.contains("+")){
+                                                    homework.deadline = homework.deadline.substring(0,homework.deadline.indexOf('+'));
+                                                }
+                                                itemHomework.time = "未设置 ~ " + homework.deadline.substring(0,homework.deadline.length()-3);
+                                            }
+                                        }
+                                        else{
+                                            if(homework.deadline == null){
+                                                itemHomework.time = homework.startTime.substring(0,homework.startTime.length()-3) + " ~ " + "未设置";
+                                            }
+                                            else{
+                                                if(homework.deadline.contains("+")){
+                                                    homework.deadline = homework.deadline.substring(0,homework.deadline.indexOf('+'));
+                                                }
+                                                if(homework.startTime.contains("+")){
+                                                    homework.startTime = homework.startTime.substring(0,homework.startTime.indexOf('+'));
+                                                }
+                                                itemHomework.time = homework.startTime.substring(0,homework.startTime.length()-3)
+                                                        + " ~ " + homework.deadline.substring(0,homework.deadline.length()-3);
+                                            }
+                                        }
                                         itemHomework.time = itemHomework.time.replaceAll("T"," ");
                                         itemHomework.comment = "提交：" + homework.answerCount;
                                         itemHomework.src = 0;
