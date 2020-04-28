@@ -1,7 +1,7 @@
 package com.example.my_test6.Pool;
 
-import com.example.my_test6.ui.user.GsonBean.MyBlogs;
-import com.example.my_test6.ui.user.GsonBean.Users;
+import com.example.my_test6.user_module.GsonBean.MyBlogs;
+import com.example.my_test6.user_module.GsonBean.Users;
 
 public class MinePool {
     private static  MinePool minePool = null;

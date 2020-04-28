@@ -12,16 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.user.Item_web" />
-        <activity android:name=".ui.user.web" />
-        <activity android:name=".ui.user.login" />
-        <activity android:name=".ui.user.logout" />
-        <activity android:name=".ui.user.message" />
-        <activity android:name=".ui.user.browse" />
-        <activity android:name=".ui.user.collection" />
-        <activity android:name=".ui.user.about" />
-        <activity android:name=".ui.user.myhomework" />
-        <activity android:name=".ui.user.myblog" />
+        <activity android:name=".user_module.Item_web" />
+        <activity android:name=".user_module.web" />
+        <activity android:name=".Pool.login" />
+        <activity android:name=".user_module.logout" />
+        <activity android:name=".user_module.browse" />
+        <activity android:name=".user_module.collection" />
+        <activity android:name=".user_module.about" />
+        <activity android:name=".user_module.myhomework" />
+        <activity android:name=".user_module.myblog" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

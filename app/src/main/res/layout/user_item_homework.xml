@@ -37,7 +37,7 @@
                 android:paddingStart="5dp"
                 android:paddingTop="5dp"
                 android:textColor="#000000"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@id/item_status"
                 app:layout_constraintTop_toTopOf="parent" />
 

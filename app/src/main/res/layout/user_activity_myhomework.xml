@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user.myhomework">
+    tools:context=".user_module.myhomework">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/homeworkTabs"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:tabIndicatorColor="@color/colorAccent"
-        app:tabSelectedTextColor="@color/colorAccent"
-        app:tabTextColor="#E91E63"
+        app:tabSelectedTextColor="@android:color/white"
+        app:tabTextColor="@android:color/darker_gray"
         android:background="@color/colorPrimary">
 
         <com.google.android.material.tabs.TabItem
