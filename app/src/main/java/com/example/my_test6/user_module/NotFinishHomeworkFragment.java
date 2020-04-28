@@ -64,54 +64,53 @@ public class NotFinishHomeworkFragment extends Fragment {
                                     Gson gson = new Gson();
                                     String json = (String) msg.obj;
                                     MyHomeworkAll homeworkAll = gson.fromJson(json,MyHomeworkAll.class);
-                                    List<MyHomeworks> homeworklist = homeworkAll.homeworks;
-                                    int len = homeworklist.size();
-                                    for(int i = 0;i<len;i++){
-                                        MyHomeworks homework = homeworklist.get(i);
-                                        if(homework.isFinished) {
-                                            continue;
-                                        }
-                                        ItemHomework itemHomework = new ItemHomework();
-                                        itemHomework.title = homework.title;
-                                        itemHomework.url = "https://edu.cnblogs.com" + homework.url;
-                                        itemHomework.Abstract = homework.description;
-                                        itemHomework.author = homework.displayName;
-                                        itemHomework.avatarUrl = "https:" + homework.avatarUrl;
-                                        if(homework.startTime == null){
-                                            if(homework.deadline == null){
-                                                itemHomework.time = "未设置";
+                                    if(!(homeworkAll == null)) {
+                                        List<MyHomeworks> homeworklist = homeworkAll.homeworks;
+                                        int len = homeworklist.size();
+                                        for (int i = 0; i < len; i++) {
+                                            MyHomeworks homework = homeworklist.get(i);
+                                            if (homework.isFinished) {
+                                                continue;
                                             }
-                                            else {
-                                                if(homework.deadline.contains("+")){
-                                                    homework.deadline = homework.deadline.substring(0,homework.deadline.indexOf('+'));
+                                            ItemHomework itemHomework = new ItemHomework();
+                                            itemHomework.title = homework.title;
+                                            itemHomework.url = "https://edu.cnblogs.com" + homework.url;
+                                            itemHomework.Abstract = homework.description;
+                                            itemHomework.author = homework.displayName;
+                                            itemHomework.avatarUrl = "https:" + homework.avatarUrl;
+                                            if (homework.startTime == null) {
+                                                if (homework.deadline == null) {
+                                                    itemHomework.time = "未设置";
+                                                } else {
+                                                    if (homework.deadline.contains("+")) {
+                                                        homework.deadline = homework.deadline.substring(0, homework.deadline.indexOf('+'));
+                                                    }
+                                                    itemHomework.time = "未设置 ~ " + homework.deadline.substring(0, homework.deadline.length() - 3);
                                                 }
-                                                itemHomework.time = "未设置 ~ " + homework.deadline.substring(0,homework.deadline.length()-3);
-                                            }
-                                        }
-                                        else{
-                                            if(homework.deadline == null){
-                                                itemHomework.time = homework.startTime.substring(0,homework.startTime.length()-3) + " ~ " + "未设置";
-                                            }
-                                            else{
-                                                if(homework.deadline.contains("+")){
-                                                    homework.deadline = homework.deadline.substring(0,homework.deadline.indexOf('+'));
+                                            } else {
+                                                if (homework.deadline == null) {
+                                                    itemHomework.time = homework.startTime.substring(0, homework.startTime.length() - 3) + " ~ " + "未设置";
+                                                } else {
+                                                    if (homework.deadline.contains("+")) {
+                                                        homework.deadline = homework.deadline.substring(0, homework.deadline.indexOf('+'));
+                                                    }
+                                                    if (homework.startTime.contains("+")) {
+                                                        homework.startTime = homework.startTime.substring(0, homework.startTime.indexOf('+'));
+                                                    }
+                                                    itemHomework.time = homework.startTime.substring(0, homework.startTime.length() - 3)
+                                                            + " ~ " + homework.deadline.substring(0, homework.deadline.length() - 3);
                                                 }
-                                                if(homework.startTime.contains("+")){
-                                                    homework.startTime = homework.startTime.substring(0,homework.startTime.indexOf('+'));
-                                                }
-                                                itemHomework.time = homework.startTime.substring(0,homework.startTime.length()-3)
-                                                        + " ~ " + homework.deadline.substring(0,homework.deadline.length()-3);
                                             }
+                                            itemHomework.time = itemHomework.time.replaceAll("T", " ");
+                                            itemHomework.comment = "提交：" + homework.answerCount;
+                                            itemHomework.src = 0;
+                                            mdata.add(itemHomework);
                                         }
-                                        itemHomework.time = itemHomework.time.replaceAll("T"," ");
-                                        itemHomework.comment = "提交：" + homework.answerCount;
-                                        itemHomework.src = 0;
-                                        mdata.add(itemHomework);
+                                        mAdapter = new HomeworkAdapter(mdata);
+                                        //设置到RecyclerView中
+                                        recyclerView.setAdapter(mAdapter);
+                                        initListener();
                                     }
-                                    mAdapter = new HomeworkAdapter(mdata);
-                                    //设置到RecyclerView中
-                                    recyclerView.setAdapter(mAdapter);
-                                    initListener();
                                 }
                             }
                         };

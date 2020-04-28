@@ -141,9 +141,10 @@ public class UserFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     //goto message
-                    FragmentManager fm = getActivity().getSupportFragmentManager();
-                    Fragment fragment = new QuestionFragment();
-                    //fm.beginTransaction().replace(R.id.testPager,fragment).commit();
+                    Intent intent = new Intent();
+                    ComponentName componentname = new ComponentName("com.example.my_test6", "com.example.my_test6.user_module.flash");
+                    intent.setComponent(componentname);
+                    startActivity(intent);
                 }
             });
 

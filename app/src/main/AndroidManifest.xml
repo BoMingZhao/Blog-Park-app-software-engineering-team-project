@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".user_module.flash"></activity>
         <activity android:name=".user_module.Item_web" />
         <activity android:name=".user_module.web" />
         <activity android:name=".Pool.login" />

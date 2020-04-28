@@ -34,10 +34,4 @@
         android:name="com.example.my_test6.user_module.UserFragment"
         android:label="@string/title_user"
         tools:layout="@layout/user_fragment_user" />
-
-    <fragment
-        android:id="@+id/navigation_user_sign"
-        android:name="com.example.my_test6.ui.user.UserFragment_login"
-        android:label="我的"
-        tools:layout="@layout/fragment_user_login" />
 </navigation>

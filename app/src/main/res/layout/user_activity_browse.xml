@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".user_module.myhomework">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/MyBrowseHistoryRecyclerView"
+    <FrameLayout
+        android:id="@+id/user_Myquestion"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent"/>
 </RelativeLayout>
